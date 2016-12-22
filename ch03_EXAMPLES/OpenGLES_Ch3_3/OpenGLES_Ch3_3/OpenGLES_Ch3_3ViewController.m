@@ -87,7 +87,7 @@ static GLKVector3 movementVectors[3] = {
    [self.baseEffect.texture2d0 
       aglkSetParameter:GL_TEXTURE_MAG_FILTER
       value:(self.shouldUseLinearFilter ?
-         GL_LINEAR : GL_NEAREST)];
+         GL_LINEAR : GL_NEAREST)];//GL_LINEAR会模糊(好像是两个的颜色取中间值),GL_NEAREST清晰(好像是两个的颜色二选一)
 }
 
 

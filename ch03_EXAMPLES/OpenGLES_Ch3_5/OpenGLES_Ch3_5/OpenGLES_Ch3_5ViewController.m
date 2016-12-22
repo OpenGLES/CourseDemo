@@ -124,7 +124,7 @@ static const SceneVertex vertices[] =
       numberOfCoordinates:3
       attribOffset:offsetof(SceneVertex, positionCoords)
       shouldEnable:YES];
-
+    //需要设置每个纹理的纹理坐标
    [self.vertexBuffer prepareToDrawWithAttrib:GLKVertexAttribTexCoord0
       numberOfCoordinates:2
       attribOffset:offsetof(SceneVertex, textureCoords)
