@@ -20,7 +20,7 @@
    value:(GLint)value;
 {
    glBindTexture(self.target, self.name);
-
+    //取样模式
    glTexParameteri(
       self.target, 
       parameterID, 
@@ -81,8 +81,8 @@ static GLKVector3 movementVectors[3] = {
 {
    [self.baseEffect.texture2d0 
       aglkSetParameter:GL_TEXTURE_WRAP_S
-      value:(self.shouldRepeatTexture ? 
-         GL_REPEAT : GL_CLAMP_TO_EDGE)];
+      value:(self.shouldRepeatTexture ?
+         GL_REPEAT : GL_CLAMP_TO_EDGE)];//GL_REPEAT超出部分重复,GL_CLAMP_TO_EDGE超出部分使用前一部分的结果
    
    [self.baseEffect.texture2d0 
       aglkSetParameter:GL_TEXTURE_MAG_FILTER
@@ -103,21 +103,15 @@ static GLKVector3 movementVectors[3] = {
       for(i = 0; i < 3; i++)
       {
          vertices[i].positionCoords.x += movementVectors[i].x;
-         if(vertices[i].positionCoords.x >= 1.0f || 
-            vertices[i].positionCoords.x <= -1.0f)
-         {
+         if(vertices[i].positionCoords.x >= 1.0f || vertices[i].positionCoords.x <= -1.0f){
             movementVectors[i].x = -movementVectors[i].x;
          }
          vertices[i].positionCoords.y += movementVectors[i].y;
-         if(vertices[i].positionCoords.y >= 1.0f || 
-            vertices[i].positionCoords.y <= -1.0f)
-         {
+         if(vertices[i].positionCoords.y >= 1.0f || vertices[i].positionCoords.y <= -1.0f){
             movementVectors[i].y = -movementVectors[i].y;
          }
          vertices[i].positionCoords.z += movementVectors[i].z;
-         if(vertices[i].positionCoords.z >= 1.0f || 
-            vertices[i].positionCoords.z <= -1.0f)
-         {
+         if(vertices[i].positionCoords.z >= 1.0f || vertices[i].positionCoords.z <= -1.0f){
             movementVectors[i].z = -movementVectors[i].z;
          }
       }
@@ -172,7 +166,7 @@ static GLKVector3 movementVectors[3] = {
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-   
+   //设置屏幕更新每秒60次,不设置的话默认每秒30次
    self.preferredFramesPerSecond = 60;
    self.shouldAnimate = YES;
    self.shouldRepeatTexture = YES;
