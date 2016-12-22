@@ -22,6 +22,7 @@ SceneVertex;
 
 /////////////////////////////////////////////////////////////////
 // Define vertex data for a triangle to use in example
+//定义了纹理坐标和位置坐标的映射
 static const SceneVertex vertices[] = 
 {
    {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f}}, // lower left corner
@@ -104,6 +105,7 @@ static const SceneVertex vertices[] =
    
    [self.vertexBuffer prepareToDrawWithAttrib:GLKVertexAttribPosition
       numberOfCoordinates:3
+    //offsetof该宏返回结构体SceneVertex中成员positionCoords的偏移量。
       attribOffset:offsetof(SceneVertex, positionCoords)
       shouldEnable:YES];
    [self.vertexBuffer prepareToDrawWithAttrib:GLKVertexAttribTexCoord0
